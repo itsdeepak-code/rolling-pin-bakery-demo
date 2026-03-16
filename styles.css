@@ -1622,7 +1622,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #111; /* prevents white flash while scrolling */
+  /* background-color: #111; /* prevents white flash while scrolling */ */
 }
 
 /* Fix hero height on mobile browsers */
@@ -1681,4 +1681,22 @@ section {
 /* Prevent cart/sidebar from causing horizontal scroll */
 .cart-sidebar {
   max-width: 100%;
+}
+
+/* MOBILE FIX */
+
+@media (max-width:768px){
+
+  .parallax-bg{
+    transform:none !important;
+    position:absolute;
+  }
+
+  .hero{
+    min-height:100svh;
+  }
+
+}
+.hero-image-container{
+  height:100%;
 }
