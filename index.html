@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rolling Pin | Taste of Mumbai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar transparent" id="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">The Rolling Pin</a>
+            <div class="nav-links desktop-only">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#custom-cakes">Custom Cakes</a>
+                <a href="#contact">Visit Us</a>
+            </div>
+            <div class="nav-actions">
+                <button class="cart-toggle" aria-label="Open cart">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="btn btn-order-online desktop-only" onclick="document.querySelector('.cart-toggle').click()">
+                    Order Online
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Cart (Will be updated later, keeping structure for now) -->
+    <div class="cart-overlay"></div>
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Order</h2>
+            <button class="close-cart" aria-label="Close cart">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items injected via JS -->
+            <div class="empty-cart-msg">Your cart is feeling light!</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-totals">
+                <span>Total</span>
+                <span class="cart-total-price">₹0</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero premium-hero fade-in-section">
+        <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Delicious artisan pastries" class="hero-bg parallax-bg">
+            <div class="hero-overlay-dark"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="animate-text-up">Experience Gourmet<br>Baking in Mumbai.</h1>
+            <p class="animate-text-up delay-1">Handcrafted pastries baked fresh daily in Mumbai.</p>
+            <div class="hero-buttons animate-text-up delay-2">
+                <a href="#menu" class="btn btn-outline">Explore Menu</a>
+                <button class="btn btn-primary btn-glow" onclick="document.querySelector('.cart-toggle').click()">
+                    Order Online
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee Highlights -->
+    <section class="marquee">
+        <div class="marquee-content">
+            <span>• WORLD FAMOUS BANANA PUDDING •</span>
+            <span>CUSTOM CAKES •</span>
+            <span>FRESHLY BAKED CUPCAKES •</span>
+            <span>GOURMET COFFEE •</span>
+            <span>• WORLD FAMOUS BANANA PUDDING •</span>
+            <span>CUSTOM CAKES •</span>
+            <span>FRESHLY BAKED CUPCAKES •</span>
+            <span>GOURMET COFFEE •</span>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section fade-in-section">
+        <div class="section-header">
+            <h2>Our Signature Menu</h2>
+            <p>Hand-crafted treats for every craving</p>
+        </div>
+        
+        <!-- Category Filters -->
+        <div class="menu-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="cakes">Cakes</button>
+            <button class="filter-btn" data-filter="pastries">Pastries</button>
+            <button class="filter-btn" data-filter="savory">Savory</button>
+            <button class="filter-btn" data-filter="beverages">Beverages</button>
+        </div>
+
+        <div class="menu-grid" id="menu-grid">
+            <!-- Menu items injected via JS -->
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <i data-lucide="sun"></i>
+                <p>Freshly baked every day</p>
+            </div>
+            <div class="feature-item">
+                <i data-lucide="star"></i>
+                <p>Premium ingredients</p>
+            </div>
+            <div class="feature-item">
+                <i data-lucide="cake"></i>
+                <p>Custom cake orders</p>
+            </div>
+            <div class="feature-item">
+                <i data-lucide="coffee"></i>
+                <p>Cozy bakery experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Cakes Section -->
+    <section id="custom-cakes" class="custom-cakes-section">
+        <div class="section-header">
+            <h2>Custom Cakes for Every Celebration</h2>
+            <p>Make your special moments sweeter</p>
+        </div>
+        <div class="custom-cakes-grid">
+            <div class="custom-cake-card">
+                <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Birthday Cakes">
+                <h3>Birthday Cakes</h3>
+            </div>
+            <div class="custom-cake-card">
+                <img src="https://images.unsplash.com/photo-1543508282-5c1f427f023f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Anniversary Cakes">
+                <h3>Anniversary Cakes</h3>
+            </div>
+            <div class="custom-cake-card">
+                <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding Cakes">
+                <h3>Wedding Cakes</h3>
+            </div>
+            <div class="custom-cake-card">
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Photo Cakes">
+                <h3>Photo Cakes</h3>
+            </div>
+        </div>
+        <div class="cta-container">
+            <a href="https://wa.me/919876543210?text=Hello%20I%20want%20to%20request%20a%20custom%20cake" class="btn btn-primary" target="_blank">Request Custom Cake</a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section fade-in-section">
+        <div class="section-header">
+            <h2>Our Baker's Gallery</h2>
+            <p>A glimpse into our freshly baked world</p>
+        </div>
+        <div class="gallery-masonry" id="gallery-container">
+            <!-- Images will be injected via JS to ensure clickability -->
+            <div class="gallery-item-masonry">
+                <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bakery Interior" class="lightbox-trigger">
+            </div>
+            <div class="gallery-item-masonry">
+                <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pastries" class="lightbox-trigger">
+            </div>
+            <div class="gallery-item-masonry">
+                <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cookies" class="lightbox-trigger">
+            </div>
+            <div class="gallery-item-masonry">
+                <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Fresh Cake" class="lightbox-trigger">
+            </div>
+            <div class="gallery-item-masonry">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chocolate Pastry" class="lightbox-trigger">
+            </div>
+            <div class="gallery-item-masonry">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artisan Cake" class="lightbox-trigger">
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>Why Customers Love Us</h2>
+            <div class="rating-badge">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <span class="rating-text">4.7 rating based on 1200+ reviews</span>
+            </div>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars-small">⭐⭐⭐⭐⭐</div>
+                <p>"Best chocolate cake in Mumbai. Super fresh and delicious."</p>
+                <span class="author">- Aditi Sharma</span>
+            </div>
+            <div class="review-card">
+                <div class="stars-small">⭐⭐⭐⭐⭐</div>
+                <p>"Ordered a birthday cake here and it looked amazing."</p>
+                <span class="author">- Rahul Patil</span>
+            </div>
+            <div class="review-card">
+                <div class="stars-small">⭐⭐⭐⭐⭐</div>
+                <p>"Lovely bakery ambience and very friendly staff."</p>
+                <span class="author">- Sneha Kulkarni</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Us Section -->
+    <section id="contact" class="visit-us-section">
+        <div class="visit-container">
+            <div class="visit-info">
+                <h2>Visit Us</h2>
+                <div class="info-block">
+                    <h3>The Rolling Pin</h3>
+                    <p><i data-lucide="map-pin"></i> 12, Janta Industrial Estate, Senapati Bapat Marg<br>Opposite Phoenix Mall<br>Lower Parel, Mumbai 400013</p>
+                </div>
+                <div class="info-block">
+                    <h3>Open Hours</h3>
+                    <p><i data-lucide="clock"></i> 9:00 AM – 10:00 PM (Everyday)</p>
+                </div>
+                <div class="info-block">
+                    <h3>Contact</h3>
+                    <p><i data-lucide="phone"></i> +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.8606478794825!2d72.82276531536838!3d18.995960087131757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cef712a20fcb%3A0xe54c75c5cb67c7!2sPhoenix%20Palladium!5e0!3m2!1sen!2sin!4v1629800000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-overlay" id="checkout-modal">
+        <div class="checkout-container">
+            <div class="checkout-header">
+                <h2>Secure Checkout</h2>
+                <button class="close-checkout" onclick="closeCheckout()"><i data-lucide="x"></i></button>
+            </div>
+            
+            <div class="checkout-body" id="checkout-form-step">
+                <form id="checkout-form" onsubmit="processPayment(event)">
+                    <div class="form-section">
+                        <h3>1. Delivery Details</h3>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required placeholder="John Doe">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone (+91)</label>
+                                <input type="tel" required placeholder="98765 43210" pattern="[0-9]{10}">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Address</label>
+                            <textarea required placeholder="Apartment, Street, Landmark..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>2. Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-radio">
+                                <input type="radio" name="payment" value="card" checked>
+                                <span>Credit / Debit Card</span>
+                                <div class="payment-icons">
+                                    <i data-lucide="credit-card"></i>
+                                </div>
+                            </label>
+                            <label class="payment-radio">
+                                <input type="radio" name="payment" value="upi">
+                                <span>UPI (GPay, PhonePe)</span>
+                                <div class="payment-icons">
+                                    <i data-lucide="smartphone"></i>
+                                </div>
+                            </label>
+                            <label class="payment-radio">
+                                <input type="radio" name="payment" value="cod">
+                                <span>Cash on Delivery</span>
+                            </label>
+                        </div>
+                        
+                        <!-- Mock Card Details -->
+                        <div class="card-details-mock" id="card-details-container">
+                            <div class="form-group">
+                                <label>Card Number</label>
+                                <input type="text" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="password" placeholder="***" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-summary">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">₹0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Delivery Fee</span>
+                            <span>₹50</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total to Pay</span>
+                            <span id="checkout-final-total">₹50</span>
+                        </div>
+                    </div>
+
+                    <div class="trust-badges">
+                        <i data-lucide="shield-check"></i>
+                        <span>256-bit Secure Encrypted Payment</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 btn-pay" id="pay-btn">
+                        Pay ₹<span id="btn-pay-amount">0</span>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="checkout-body text-center hidden" id="checkout-processing-step">
+                <div class="spinner"></div>
+                <h3>Processing Payment...</h3>
+                <p>Please do not close this window.</p>
+            </div>
+            
+            <div class="checkout-body text-center hidden" id="checkout-success-step">
+                <div class="success-icon animate-pop">
+                    <i data-lucide="check-circle" style="width: 80px; height: 80px; color: var(--color-whatsapp);"></i>
+                </div>
+                <h2>Order Confirmed!</h2>
+                <p>Thank you for choosing The Rolling Pin.</p>
+                <p class="order-id">Order ID: #TRP-<span id="random-order-id">1001</span></p>
+                <p class="delivery-time">Estimated delivery: <strong>45-60 mins</strong></p>
+                <button class="btn btn-outline close-success mt-4" onclick="closeCheckoutAndClearCart()">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram Feed -->
+    <section class="insta-feed fade-in-section">
+        <div class="insta-header text-center mb-4">
+            <h2><i data-lucide="instagram"></i> Follow @TheRollingPin</h2>
+            <p>Share your sweet moments with us</p>
+        </div>
+        <div class="insta-grid">
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1571115177098-24c42de1bd0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instagram 1">
+                <div class="insta-overlay"><i data-lucide="heart"></i></div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1542691457-cbe4df041eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instagram 2">
+                <div class="insta-overlay"><i data-lucide="heart"></i></div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instagram 3">
+                <div class="insta-overlay"><i data-lucide="heart"></i></div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1614088685112-0a860ce0afcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instagram 4">
+                <div class="insta-overlay"><i data-lucide="heart"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer fade-in-section">
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h3>Subscribe for Sweet Offers</h3>
+                <p>Join our newsletter and get 10% off your first order!</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!')">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>The Rolling Pin</h3>
+                <p>Fresh cakes, pastries and breads baked daily in Mumbai.</p>
+                <a href="https://wa.me/919876543210?text=Hello%20I%20want%20to%20order%20a%20cake" class="btn-whatsapp-footer mt-4 inline-block" target="_blank">
+                    <i data-lucide="message-circle" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle;"></i> Order on WhatsApp
+                </a>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#custom-cakes">Custom Cakes</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>hello@therollingpin.in</p>
+                <p>+91 98765 43210</p>
+                <div class="socials">
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Rolling Pin Mumbai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Order Button -->
+    <button class="mobile-sticky-btn" onclick="document.querySelector('.cart-toggle').click()">
+        <i data-lucide="shopping-bag"></i> <span style="margin-left:8px;">Order Online</span>
+    </button>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
